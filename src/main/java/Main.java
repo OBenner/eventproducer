@@ -22,22 +22,20 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String host = args[0];
         Integer port = Integer.valueOf(args[1]);
+        int numEvent = Integer.parseInt( args[2]);
         System.out.println(host + port);
         InetSocketAddress address = new InetSocketAddress(host, port);
 
         SocketChannel socket = SocketChannel.open(address);
 
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("product\t")
-                .append("132\t")
-                .append("2019-05-07\t")
-                .append("category\t")
-                .append("192.168.1.1")
-                .append("\n");
 
-        System.out.println(stringBuilder.toString());
-        ByteBuffer buffer = ByteBuffer.wrap(stringBuilder.toString().getBytes());
-        socket.write(buffer);
+//
+            for (int i =1;i<numEvent;i++){
+                 Event event = new Event();
+                 System.out.println(event);
+                ByteBuffer buffer = ByteBuffer.wrap(event.toString().getBytes());
+                 socket.write(buffer);
+}
 
 //
 //        String fileName = "src/main/resources/cars.csv";
