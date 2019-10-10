@@ -17,13 +17,23 @@ public class Event {
         this.product = UUID.randomUUID().toString().replace("-", "");
                // RandomStringUtils.randomAlphabetic(7);
         this.price =String.valueOf(( new BigDecimal(10 + (2000 - 10) * r.nextDouble()).setScale(2, RoundingMode.UP)));
-        this.date = dates[r.nextInt(6)];
+        this.date = dates[r.nextInt(6)]+time[r.nextInt(6)];
         this.category = categorys[r.nextInt(6)];
         this.ip = r.nextInt(256) + "." + r.nextInt(256) + "." + r.nextInt(256) + "." + r.nextInt(256);;
     }
 
     static String[] dates = new String[]{"2019-09-07","2019-09-06","2019-09-05","2019-09-04","2019-09-03","2019-09-02","2019-09-01"};
     static String[] categorys = new String[]{"electronics","toys","books","gifts","computers","clothes","shoes"};
+    static String[] time = new String[]{"T09:45:00.000+02:00",
+            "T01:30:00.000+02:00",
+            "T07:45:00.000+02:00",
+            "T22:12:00.000+02:00",
+            "T19:13:00.000+02:00",
+            "T17:56:00.000+02:00",
+            "T23:12:00.000+02:00",
+            "T16:13:00.000+02:00",
+            "T12:56:00.000+02:00",
+            "T20:00:00.000+02:00"};
 
 
     public String getProduct() {
@@ -68,17 +78,18 @@ public class Event {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(product)
-                .append("\t")
-                .append(price)
-                .append("\t")
-                .append(date)
-                .append("\t")
-                .append(category)
-                .append("\t")
-                .append(ip)
-                .append("");
-        return stringBuilder.toString();
+        return product+"\t"+price+"\t"+date+"\t"+category+"\t"+ip+"\n";
+//        StringBuilder stringBuilder = new StringBuilder();
+//        stringBuilder.append(product)
+//                .append("\t")
+//                .append(price)
+//                .append("\t")
+//                .append(date)
+//                .append("\t")
+//                .append(category)
+//                .append("\t")
+//                .append(ip)
+//                .append("\n");
+//        return stringBuilder.toString();
     }
 }
