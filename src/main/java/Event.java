@@ -14,10 +14,10 @@ public class Event {
 
     public Event() {
         Random r = new Random();
-        this.product = UUID.randomUUID().toString().replace("-", "");
+        this.product =  products[r.nextInt(14)];
                // RandomStringUtils.randomAlphabetic(7);
         this.price =String.valueOf(( new BigDecimal(10 + (2000 - 10) * r.nextDouble()).setScale(2, RoundingMode.UP)));
-        this.date = dates[r.nextInt(6)]+time[r.nextInt(6)];
+        this.date = dates[r.nextInt(6)]+time[r.nextInt(8)];
         this.category = categorys[r.nextInt(6)];
         this.ip = r.nextInt(256) + "." + r.nextInt(256) + "." + r.nextInt(256) + "." + r.nextInt(256);;
     }
@@ -34,7 +34,8 @@ public class Event {
             "T16:13:00.000+02:00",
             "T12:56:00.000+02:00",
             "T20:00:00.000+02:00"};
-
+    static String[] products = new String[]{"product1","product2","product3","product4","product5","product7","product7"
+            ,"product8","product9","product10","product11","product12","product13","product14","product15"};
 
     public String getProduct() {
         return product;
